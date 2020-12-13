@@ -32,6 +32,7 @@ void replaceAllOccurencesInString(std::string* str, std::string wordToReplace, s
     {
         size_t pos = str->find(wordToReplace);
         if (pos == std::string::npos) break;
+        std::cout << "Replacing " << wordToReplace << " with " << wordToReplaceWith<< "\n";
         str->replace(pos, len, wordToReplaceWith);    
     }
 }
