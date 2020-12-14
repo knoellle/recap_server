@@ -42,6 +42,14 @@ void replaceHostWithLocalhostInString(std::string* str, std::string host) {
     std::string localhost = "127.0.0.";
     for (int i = 0; i < zeroCount; i++) localhost += "0";
     localhost += "1";
+    if (host.length() != localhost.length())
+    {
+        std::cerr   << "Cannot replace hostname, new string has different size:\n"
+                    << "\t" << host << " (length: " << host.length() << "\n"
+                    << "\t" << localhost << " (length: " << localhost.length() << "\n";
+        exit(1);
+    }
+
     replaceAllOccurencesInString(str, host, localhost);
 }
 
