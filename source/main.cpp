@@ -56,7 +56,7 @@ bool Application::OnInit() {
 	mTickServer = std::make_unique<Blaze::Server>(mIoService, 8999);
 
 	// HTTP
-	mHttpServer = std::make_unique<HTTP::Server>(mIoService, 80);
+	mHttpServer = std::make_unique<HTTP::Server>(mIoService, 8080);
 	mQosServer = std::make_unique<HTTP::Server>(mIoService, 17502);
 
 	const auto& router = mHttpServer->get_router();
