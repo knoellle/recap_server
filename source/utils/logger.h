@@ -5,7 +5,7 @@
 #include <iostream>
 #include <chrono>
 #include <ctime>  
-#include <windows.h>
+// #include <windows.h>
 #include <stdio.h>
 #include <time.h>
 
@@ -19,8 +19,8 @@ class logger {
 		static const int priority = 2;
 
 		static void setConsoleTextColor(int k) {
-			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-			SetConsoleTextAttribute(hConsole, k);
+			// HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+			// SetConsoleTextAttribute(hConsole, k);
 		}
 		static std::string time() {
 			std::time_t now = std::time(0);

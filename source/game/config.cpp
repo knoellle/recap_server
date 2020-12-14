@@ -6,7 +6,8 @@
 #include <vector>
 #include <iostream>
 #include <pugixml.hpp>
-#include <ShlObj.h>
+// #include <shlobj.h>
+#include <cstring>
 
 // Game
 namespace Game {
@@ -61,13 +62,13 @@ namespace Game {
 
 	std::string Config::darksporeAppDataFolder() {
 		wchar_t* localAppData = 0;
-		if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, NULL, &localAppData)))
-		{
-			std::wstring localAppDataWs(localAppData);
-			std::string localAppDataStr(localAppDataWs.begin(), localAppDataWs.end());
-			localAppDataStr += "\\DarksporeData";
-			return localAppDataStr;
-		}
+		// if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, NULL, &localAppData)))
+		// {
+		// 	std::wstring localAppDataWs(localAppData);
+		// 	std::string localAppDataStr(localAppDataWs.begin(), localAppDataWs.end());
+		// 	localAppDataStr += "\\DarksporeData";
+		// 	return localAppDataStr;
+		// }
 		return "";
 	}
 
@@ -79,7 +80,7 @@ namespace Game {
 		const auto& str = Get(key);
 		if (str == "1") {
 			return true;
-		} else if (_stricmp(str.c_str(), "true") == 0) {
+		} else if (strcmp(str.c_str(), "true") == 0) {
 			return true;
 		} else {
 			return false;

@@ -36,10 +36,10 @@ Application& Application::GetApp() {
 bool Application::OnInit() {
 	setlocale(LC_ALL, "C");
 
-	AllocConsole();
-	(void)freopen("CONOUT$", "w", stdout);
-	(void)freopen("CONOUT$", "w", stderr);
-	SetConsoleOutputCP(CP_UTF8);
+	// AllocConsole();
+	// (void)freopen("CONOUT$", "w", stdout);
+	// (void)freopen("CONOUT$", "w", stderr);
+	// SetConsoleOutputCP(CP_UTF8);
 
 	// Config
 	Game::Config::Load("config.xml");

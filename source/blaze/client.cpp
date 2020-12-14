@@ -15,6 +15,7 @@
 #include "../utils/logger.h"
 
 #include <boost/bind.hpp>
+#include <boost/lexical_cast.hpp>
 #include <iostream>
 
 // Blaze
@@ -123,6 +124,20 @@ namespace Blaze {
 			delete this;
 		} else {
 			logger::error("Handshake error: " + error.message());
+
+			std::string err = error.message();
+			if (error.category() == boost::asio::error::get_ssl_category()) {
+				err = std::string(" (")
+						+boost::lexical_cast<std::string>(ERR_GET_LIB(error.value()))+","
+						+boost::lexical_cast<std::string>(ERR_GET_FUNC(error.value()))+","
+						+boost::lexical_cast<std::string>(ERR_GET_REASON(error.value()))+") "
+				;
+			// 	//ERR_PACK /* crypto/err/err.h */
+				char buf[128];
+				::ERR_error_string_n(error.value(), buf, sizeof(buf));
+				err += buf;
+			}
+			std::cerr << err <<"\n";
 			delete this;
 		}
 	}

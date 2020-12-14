@@ -1419,8 +1419,9 @@ namespace RakNet {
 			mSelf->SetTimeoutTime(30000, UNASSIGNED_SYSTEM_ADDRESS);
 #ifdef PACKET_LOGGING
 			mSelf->AttachPlugin(&mLogger);
+			SocketDescriptor socket{port, nullptr};
 #endif
-			if (mSelf->Startup(4, 30, &SocketDescriptor(port, nullptr), 1)) {
+			if (mSelf->Startup(4, 30, &socket, 1)) {
 				mSelf->SetMaximumIncomingConnections(4);
 				mSelf->SetOccasionalPing(true);
 				mSelf->SetUnreliableTimeout(1000);
@@ -1575,7 +1576,7 @@ namespace RakNet {
 				std::cout << std::setw(2) << std::setfill('0') << static_cast<int>(reinterpret_cast<uint8_t*>(&value)[j]) << " ";
 			}
 		}
-		std::cout << std::resetiosflags(0) << std::endl;
+		std::cout << std::resetiosflags(std::ios_base::fmtflags(0)) << std::endl;
 	}
 	
 	void Server::OnDebugPing(Packet* packet) {

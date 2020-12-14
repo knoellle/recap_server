@@ -6,6 +6,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <memory>
 #include "../utils/functions.h"
 #include "../game/template.h"
 

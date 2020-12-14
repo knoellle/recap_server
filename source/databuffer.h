@@ -6,6 +6,7 @@
 // Include
 #include <vector>
 #include <algorithm>
+#include <cstring>
 
 // DataBuffer
 class DataBuffer {
