@@ -1036,6 +1036,7 @@ namespace Game {
 
 		pugi::xml_document document;
 		if (auto docResponse = document.append_child("response")) {
+			add_common_keys(docResponse, session.get_darkspore_version());
 			// Write "account" data
 			if (user) {
 				auto& account = user->get_account();
@@ -1111,7 +1112,6 @@ namespace Game {
 				response.set(boost::beast::http::field::set_cookie, "token=" + cookie);
 			}
 
-			add_common_keys(docResponse, session.get_darkspore_version());
 		}
 
 		response.set(boost::beast::http::field::content_type, "text/xml");
